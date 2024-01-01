@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and deploy
+      run: |
+        # Add commands to build your static content (e.g., npm install, npm run build)
+        # For example, if using Jekyll:
+        # bundle install
+        # bundle exec jekyll build
+
+        # Move the built content to the root directory
+        mv path/to/build/* .
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "danarcokrosayudha@gmail.com"
+        git config --global user.name "buabik"
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push origin gh-pages
